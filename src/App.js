@@ -4,18 +4,18 @@ import Header from './components/Navbar/Navbar'
 import { Redirect, Route, Switch } from "react-router-dom";
 import CardForPost from './components/Card/Card';
 import './App.scss'
+import AddPost from './components/AddPost';
 
-const App = () => {
-
+export const App = () => {
   return (<div className="app">
     <Header />
+    {/* <AddPost /> */}
     <Switch>
       <Route exact path="/" render={() => <Posts />} />
       <Route path="/card/:id" render={() => <CardForPost />} />
+      <Route path="/createPost" render={() => <AddPost />} />
       <Redirect to="/" />
     </Switch>
   </div>
   );
 };
-
-export default App;

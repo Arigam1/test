@@ -15,5 +15,10 @@ export const postsAPI = {
 
     delete(id) {
         return instance.delete(`posts/${id}`)
+    },
+
+    createPost() {
+        return instance.post(`posts`)
     }
+
 };

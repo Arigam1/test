@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Spinner } from 'react-bootstrap'
+import { Spinner, Button, FormControl } from 'react-bootstrap'
 import { NavLink } from "react-router-dom";
 import { postsAPI } from './../api/api'
 import Pagination from './../Pagination/Pagination'
 import './Post.scss'
 
 const Posts = () => {
-
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
+  const [filteredPosts, setFilteredPosts] = useState([]);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   const paginate = pageNumber => setCurrentPage(pageNumber);
-
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -33,12 +32,18 @@ const Posts = () => {
     return <Spinner animation="border" variant="primary" />;
   }
 
-
-  return (<div>
-    <ul className="ul">
+  return (<div className="posts">
+    <div className="headerPost">
+      <div className="headerPost-left">
+        <FormControl aria-label="Default" aria-describedby="inputGroup-sizing-default" onChange={setFilteredPosts} />
+        <Button onClick={() => { }} className="search-button"> Search </Button>
+      </div>
+      <NavLink to={`/createPost`}><Button variant="success">Создать пост</Button></NavLink>
+    </div>
+    <ul>
       {currentPosts.map((post) => (
         <li key={post.id} className='list-group-item'>
-          <NavLink to={`/card/${post.id}`} style={{ fontSize: 24, textTransform: 'uppercase' }}>{post.title}</NavLink>
+          <NavLink to={`/card/${post.id}`}>{post.title}</NavLink>
         </li>
       ))
       }
