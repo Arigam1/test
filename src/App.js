@@ -4,7 +4,7 @@ import Header from './components/Navbar/Navbar'
 import { Redirect, Route, Switch } from "react-router-dom";
 import CardForPost from './components/Card/Card';
 import './App.scss'
-import AddPost from './components/AddPost';
+import AddPost from './components/Posts/AddPost';
 
 export const App = () => {
   return (<div className="app">

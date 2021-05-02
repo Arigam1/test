@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Spinner, Button, FormControl } from 'react-bootstrap'
 import { NavLink } from "react-router-dom";
-import { postsAPI } from './../api/api'
-import Pagination from './../Pagination/Pagination'
+import { postsAPI } from '../api/api'
+import Pagination from '../Pagination/Pagination'
 import './Post.scss'
 
 const Posts = () => {
