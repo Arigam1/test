@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Container, Button, Card, Form, Row } from 'react-bootstrap'
 
 
-const AddPost = () => {
+const AddPost = (props) => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [createPost, setCreatePost] = useState(false)
 
 
     useEffect(() => {
-        if (createPost == true) {
+        if (createPost) {
             fetch('https://jsonplaceholder.typicode.com/posts', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -22,12 +22,14 @@ const AddPost = () => {
                 },
             })
                 .then((response) => response.json())
+                // в консоле можно чекнуть новый пост... При необходимости могу создать новую компоненту под эти манипуляции 
+                // или добавить какой нибудь стейт менеджер для отрисовки в компоненте
+                // (или контекст под это небольшое приложение проще всего будет реализовать и отрисовать где удобно)
+                // просто нету макета! вот и сделал в виде окошка, а так готов ко ВСЕМУ!
                 .then((json) => console.log(json));
         }
         setCreatePost(false)
     }, [createPost]);
-
-
 
     return (
         <Container

@@ -9,7 +9,6 @@ import AddPost from './components/Posts/AddPost';
 export const App = () => {
   return (<div className="app">
     <Header />
-    {/* <AddPost /> */}
     <Switch>
       <Route exact path="/" render={() => <Posts />} />
       <Route path="/card/:id" render={() => <CardForPost />} />

@@ -10,6 +10,13 @@ const Posts = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
+
+  // const [search, setSearch] = useState('');
+
+  // // if (input.value) {
+  // //   search
+  // // }
+
   const [filteredPosts, setFilteredPosts] = useState([]);
 
   const indexOfLastPost = currentPage * postsPerPage;
@@ -47,6 +54,13 @@ const Posts = () => {
         </li>
       ))
       }
+      {/* {
+        filteredPosts.map((post) => (
+          <li key={post.id} className='list-group-item'>
+            <NavLink to={`/card/${post.id}`}>{post.title}</NavLink>
+          </li>
+        ))
+      } */}
     </ul >
     <Pagination postsPerPage={postsPerPage}
       totalPosts={posts.length}
