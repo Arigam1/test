@@ -11,13 +11,7 @@ const Posts = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
 
-  // const [search, setSearch] = useState('');
-
-  // // if (input.value) {
-  // //   search
-  // // }
-
-  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [search, setSearch] = useState('');
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -42,13 +36,13 @@ const Posts = () => {
   return (<div className="posts">
     <div className="headerPost">
       <div className="headerPost-left">
-        <FormControl aria-label="Default" aria-describedby="inputGroup-sizing-default" onChange={setFilteredPosts} />
+        <FormControl aria-label="Default" aria-describedby="inputGroup-sizing-default" onChange={e => setSearch(e.target.value)} />
         <Button onClick={() => { }} className="search-button"> Search </Button>
       </div>
       <NavLink to={`/createPost`}><Button variant="success">Создать пост</Button></NavLink>
     </div>
     <ul>
-      {currentPosts.map((post) => (
+      {currentPosts.filter(value => value.title.toString().toLowerCase().includes(search.toString().toLowerCase())).map((post) => (
         <li key={post.id} className='list-group-item'>
           <NavLink to={`/card/${post.id}`}>{post.title}</NavLink>
         </li>

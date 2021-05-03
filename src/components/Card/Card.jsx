@@ -28,7 +28,7 @@ const CardForPost = () => {
 
     }, [del]);
 
-    if (del == true) {
+    if (del) {
         return (
             <Card className="text-center сard ">
                 <Card.Body>
